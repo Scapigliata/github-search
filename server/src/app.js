@@ -6,11 +6,7 @@ const express = require('express');
 const app = require('express')();
 const PORT = process.env.PORT || 3232;
 
-app.use(
-  cors({
-    origin: 'http://localhost:3001',
-  })
-);
+app.use(cors());
 app.use(express.json());
 app.use(issueRouter);
 app.use(searchRouter);

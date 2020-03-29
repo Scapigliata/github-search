@@ -45,7 +45,7 @@ const SavedIssues = () => {
     <ListGroup>
       {saved &&
         saved.map(o => (
-          <ListGroup.Item key={o.title}>
+          <ListGroup.Item key={o.id}>
             <li>{o.title}</li>
             <a href={o.url}>{o.url}</a>
           </ListGroup.Item>

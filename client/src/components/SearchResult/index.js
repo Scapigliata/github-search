@@ -1,10 +1,25 @@
 import React, { useContext, useState } from 'react';
+import styled from 'styled-components';
+
 import { SearchContext } from '../../utils/context';
 import { ListGroup, Button } from 'react-bootstrap';
 import { saveIssue } from '../../services/search';
+import Loader from '../Loader';
+import Error from '../Error';
+
+const Section = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const Container = styled.div`
+  min-width: 500px;
+  width: 90%;
+`;
 
 const SearchResult = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const saveIssueHandler = async issue => {
@@ -28,19 +43,28 @@ const SearchResult = () => {
     console.log('res', result);
   };
 
+  if (!results) {
+    setError(true);
+  }
+
   return (
     <ListGroup>
-      {results ? (
+      {loading && <Loader className="loader" />}
+      {error && <Error onButtonClick={() => onClickHandler()} />}
+      {results &&
         results.map(o => (
-          <ListGroup.Item onClick={() => onClickHandler(o)} key={o.title}>
-            <li>{o.title}</li>
-            <a href={o.url}>{o.url}</a>
-            <Button onClick={() => saveIssueHandler(o)}>+</Button>
-          </ListGroup.Item>
-        ))
-      ) : (
-        <div>Search Results</div>
-      )}
+          <Container>
+            <ListGroup.Item key={o.url}>
+              <Section>
+                <li>{o.title}</li>
+                <Button className="ml-1" onClick={() => saveIssueHandler(o)}>
+                  +
+                </Button>
+              </Section>
+              <a href={o.url}>{o.url}</a>
+            </ListGroup.Item>
+          </Container>
+        ))}
     </ListGroup>
   );
 };

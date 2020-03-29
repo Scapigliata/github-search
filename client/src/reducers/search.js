@@ -13,7 +13,7 @@ export const initialState = {
   search: {
     query: '',
     language: 'JavaScript',
-    label: 'help',
+    label: 'bug',
   },
 };
 

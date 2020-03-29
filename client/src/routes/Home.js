@@ -1,9 +1,8 @@
-import React, { useReducer, useEffect, useCallback } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import searchReducer, { initialState, types } from '../reducers/search';
 import { getSavedSearches, searchIssues } from '../services/search';
 import { SearchContext } from '../utils/context';
 import SearchBar from '../components/SearchBar';
-import SavedSearches from '../components/SavedSearches';
 import SearchResult from '../components/SearchResult';
 import { Row, Col } from 'react-bootstrap';
 
@@ -29,7 +28,7 @@ const Home = () => {
 
   useEffect(() => {
     searchIssuesHandler();
-  }, [language, label]);
+  }, [query, language, label]);
 
   const handleSetSaved = async e => {
     const { data } = await getSavedSearches;
@@ -38,8 +37,6 @@ const Home = () => {
       payload: data,
     });
   };
-
-  console.log(JSON.stringify(state, null, 2));
 
   useEffect(() => {
     handleSetSaved();
