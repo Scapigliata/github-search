@@ -1,1 +1,1 @@
-[{"title":"Good first issue","url":"test"},{"title":"Good first issue","url":"test"}]
+[{"title":"Good first issue","url":"test"},{"title":"11000 E11000 duplicate key error index: dbName.users.$_id_ dup key: { : ObjectId('5469eb08370fea375383e2d3')}","id":49087170,"url":"https://api.github.com/repos/Automattic/mongoose/issues/2471","repository_url":"https://api.github.com/repos/Automattic/mongoose"}]

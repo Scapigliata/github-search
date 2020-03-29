@@ -4,7 +4,7 @@ const BASE_URL = 'http://localhost:3232';
 
 const ROUTES = {
   SEARCH: `${BASE_URL}/search/issues`,
-  SAVE: `${BASE_URL}/issues/save`,
+  ISSUES: `${BASE_URL}/issues`,
 };
 
 export const searchIssues = params =>
@@ -12,7 +12,8 @@ export const searchIssues = params =>
     params,
   });
 
-export const saveIssue = issue => axios.get(`${ROUTES.SAVE}?${issue}`);
+export const getIssues = axios.get(ROUTES.ISSUES);
+export const saveIssue = issue => axios.post(`${ROUTES.ISSUES}`, issue);
 
 export const getSavedSearches = new Promise((res, rej) => {
   setTimeout(() => {
