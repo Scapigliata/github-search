@@ -14,7 +14,7 @@ CLIENT: In the project directory, cd into client and run:
 
 ### `npm i && npm start`
 
-SERVER: In the project directory, cd into client and run:
+SERVER: In the project directory, cd into server and run:
 
 ### `npm i && npm run dev`
 
